@@ -18,6 +18,7 @@ public class NewIOController {
     private NewIOService newIOService;
 
 
+    //newio
     @RequestMapping("/newio")
     public String newio(@RequestParam(value = "id") String aid, String power) {
         logger.info(String.format("id: %s, power: %s", aid, power));
