@@ -1,14 +1,15 @@
 package com.lyap.service.impl;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import com.lyap.service.DemoService;
 import com.lyap.entity.Demo;
+import com.lyap.mapper.DemoMapper;
+import com.lyap.service.DemoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by yeyang.lj on 2017/10/20.
@@ -18,8 +19,15 @@ public class DemoServiceImpl implements DemoService {
     @Resource
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    private DemoMapper demoMapper;
+
     @Override
     public List<Demo> findAll() {
+        return demoMapper.findAll();
+    }
+
+    private List<Demo> findAllByJdbcTemplate() {
         String sql = "select * from demo";
         BeanPropertyRowMapper<Demo> rowMapper = new BeanPropertyRowMapper<>(Demo.class);
         return jdbcTemplate.query(sql, rowMapper);

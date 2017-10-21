@@ -38,5 +38,7 @@ spring:
     suffix: .ftl
 
 
-myConfig:
-  name: lyap
+
+mybatis:
+  mapper-locations: classpath:com/lyap/*/mapper/*.xml
+  type-aliases-package: com.lyap.entity

@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HelloWorldController {
-    @Value("${myConfig.name}")
-    private String name;
 
     @RequestMapping("/hello/{name}")
     public Object hello(@PathVariable("name") String name) {
         JSONObject obj = new JSONObject(16, true);
-        obj.put("name in conf:", this.name);
         obj.put("name in path", name);
         return obj;
     }
