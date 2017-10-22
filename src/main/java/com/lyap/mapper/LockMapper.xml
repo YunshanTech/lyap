@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyap.mapper.LockMapper">
+  <resultMap id="BaseResultMap" type="com.lyap.entity.Lock">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lock_id" jdbcType="VARCHAR" property="lockId" />
+    <result column="power" jdbcType="VARCHAR" property="power" />
+    <result column="hardware_version" jdbcType="VARCHAR" property="hardwareVersion" />
+    <result column="software_version" jdbcType="VARCHAR" property="softwareVersion" />
+    <result column="password1" jdbcType="VARCHAR" property="password1" />
+    <result column="password2" jdbcType="VARCHAR" property="password2" />
+    <result column="cardno1" jdbcType="VARCHAR" property="cardno1" />
+    <result column="cardno2" jdbcType="VARCHAR" property="cardno2" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_mod_time" jdbcType="TIMESTAMP" property="lastModTime" />
+    <result column="mod_user_id" jdbcType="VARCHAR" property="modUserId" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, lock_id, power, hardware_version, software_version, password1, password2, cardno1, 
+    cardno2, status, create_time, last_mod_time, mod_user_id, remarks
+  </sql>
+  <select id="selectByExample" parameterType="com.lyap.entity.LockExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lock
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lock
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lock
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lyap.entity.LockExample">
+    delete from lock
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lyap.entity.Lock">
+    insert into lock (id, lock_id, power, 
+      hardware_version, software_version, password1, 
+      password2, cardno1, cardno2, 
+      status, create_time, last_mod_time, 
+      mod_user_id, remarks)
+    values (#{id,jdbcType=INTEGER}, #{lockId,jdbcType=VARCHAR}, #{power,jdbcType=VARCHAR}, 
+      #{hardwareVersion,jdbcType=VARCHAR}, #{softwareVersion,jdbcType=VARCHAR}, #{password1,jdbcType=VARCHAR}, 
+      #{password2,jdbcType=VARCHAR}, #{cardno1,jdbcType=VARCHAR}, #{cardno2,jdbcType=VARCHAR}, 
+      #{status,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{lastModTime,jdbcType=TIMESTAMP}, 
+      #{modUserId,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyap.entity.Lock">
+    insert into lock
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="lockId != null">
+        lock_id,
+      </if>
+      <if test="power != null">
+        power,
+      </if>
+      <if test="hardwareVersion != null">
+        hardware_version,
+      </if>
+      <if test="softwareVersion != null">
+        software_version,
+      </if>
+      <if test="password1 != null">
+        password1,
+      </if>
+      <if test="password2 != null">
+        password2,
+      </if>
+      <if test="cardno1 != null">
+        cardno1,
+      </if>
+      <if test="cardno2 != null">
+        cardno2,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastModTime != null">
+        last_mod_time,
+      </if>
+      <if test="modUserId != null">
+        mod_user_id,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lockId != null">
+        #{lockId,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="hardwareVersion != null">
+        #{hardwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareVersion != null">
+        #{softwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="password1 != null">
+        #{password1,jdbcType=VARCHAR},
+      </if>
+      <if test="password2 != null">
+        #{password2,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno1 != null">
+        #{cardno1,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno2 != null">
+        #{cardno2,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModTime != null">
+        #{lastModTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modUserId != null">
+        #{modUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lyap.entity.LockExample" resultType="java.lang.Long">
+    select count(*) from lock
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lock
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.lockId != null">
+        lock_id = #{record.lockId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.power != null">
+        power = #{record.power,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hardwareVersion != null">
+        hardware_version = #{record.hardwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.softwareVersion != null">
+        software_version = #{record.softwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password1 != null">
+        password1 = #{record.password1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password2 != null">
+        password2 = #{record.password2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardno1 != null">
+        cardno1 = #{record.cardno1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardno2 != null">
+        cardno2 = #{record.cardno2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastModTime != null">
+        last_mod_time = #{record.lastModTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modUserId != null">
+        mod_user_id = #{record.modUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null">
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lock
+    set id = #{record.id,jdbcType=INTEGER},
+      lock_id = #{record.lockId,jdbcType=VARCHAR},
+      power = #{record.power,jdbcType=VARCHAR},
+      hardware_version = #{record.hardwareVersion,jdbcType=VARCHAR},
+      software_version = #{record.softwareVersion,jdbcType=VARCHAR},
+      password1 = #{record.password1,jdbcType=VARCHAR},
+      password2 = #{record.password2,jdbcType=VARCHAR},
+      cardno1 = #{record.cardno1,jdbcType=VARCHAR},
+      cardno2 = #{record.cardno2,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=BIT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      last_mod_time = #{record.lastModTime,jdbcType=TIMESTAMP},
+      mod_user_id = #{record.modUserId,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyap.entity.Lock">
+    update lock
+    <set>
+      <if test="lockId != null">
+        lock_id = #{lockId,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        power = #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="hardwareVersion != null">
+        hardware_version = #{hardwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareVersion != null">
+        software_version = #{softwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="password1 != null">
+        password1 = #{password1,jdbcType=VARCHAR},
+      </if>
+      <if test="password2 != null">
+        password2 = #{password2,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno1 != null">
+        cardno1 = #{cardno1,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno2 != null">
+        cardno2 = #{cardno2,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModTime != null">
+        last_mod_time = #{lastModTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modUserId != null">
+        mod_user_id = #{modUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyap.entity.Lock">
+    update lock
+    set lock_id = #{lockId,jdbcType=VARCHAR},
+      power = #{power,jdbcType=VARCHAR},
+      hardware_version = #{hardwareVersion,jdbcType=VARCHAR},
+      software_version = #{softwareVersion,jdbcType=VARCHAR},
+      password1 = #{password1,jdbcType=VARCHAR},
+      password2 = #{password2,jdbcType=VARCHAR},
+      cardno1 = #{cardno1,jdbcType=VARCHAR},
+      cardno2 = #{cardno2,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_mod_time = #{lastModTime,jdbcType=TIMESTAMP},
+      mod_user_id = #{modUserId,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

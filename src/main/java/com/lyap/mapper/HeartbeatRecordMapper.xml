@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyap.mapper.HeartbeatRecordMapper">
+  <resultMap id="BaseResultMap" type="com.lyap.entity.HeartbeatRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="gatewaybox_id" jdbcType="VARCHAR" property="gatewayboxId" />
+    <result column="heartbeat_time" jdbcType="TIMESTAMP" property="heartbeatTime" />
+    <result column="dooroperation_record_id" jdbcType="INTEGER" property="dooroperationRecordId" />
+    <result column="powerdown_warning" jdbcType="BIT" property="powerdownWarning" />
+    <result column="return_function" jdbcType="TINYINT" property="returnFunction" />
+    <result column="return_status" jdbcType="BIT" property="returnStatus" />
+    <result column="return_data" jdbcType="VARCHAR" property="returnData" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, gatewaybox_id, heartbeat_time, dooroperation_record_id, powerdown_warning, return_function, 
+    return_status, return_data, remarks
+  </sql>
+  <select id="selectByExample" parameterType="com.lyap.entity.HeartbeatRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from heartbeat_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from heartbeat_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from heartbeat_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lyap.entity.HeartbeatRecordExample">
+    delete from heartbeat_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lyap.entity.HeartbeatRecord">
+    insert into heartbeat_record (id, gatewaybox_id, heartbeat_time, 
+      dooroperation_record_id, powerdown_warning, return_function, 
+      return_status, return_data, remarks
+      )
+    values (#{id,jdbcType=INTEGER}, #{gatewayboxId,jdbcType=VARCHAR}, #{heartbeatTime,jdbcType=TIMESTAMP}, 
+      #{dooroperationRecordId,jdbcType=INTEGER}, #{powerdownWarning,jdbcType=BIT}, #{returnFunction,jdbcType=TINYINT}, 
+      #{returnStatus,jdbcType=BIT}, #{returnData,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyap.entity.HeartbeatRecord">
+    insert into heartbeat_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gatewayboxId != null">
+        gatewaybox_id,
+      </if>
+      <if test="heartbeatTime != null">
+        heartbeat_time,
+      </if>
+      <if test="dooroperationRecordId != null">
+        dooroperation_record_id,
+      </if>
+      <if test="powerdownWarning != null">
+        powerdown_warning,
+      </if>
+      <if test="returnFunction != null">
+        return_function,
+      </if>
+      <if test="returnStatus != null">
+        return_status,
+      </if>
+      <if test="returnData != null">
+        return_data,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gatewayboxId != null">
+        #{gatewayboxId,jdbcType=VARCHAR},
+      </if>
+      <if test="heartbeatTime != null">
+        #{heartbeatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dooroperationRecordId != null">
+        #{dooroperationRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="powerdownWarning != null">
+        #{powerdownWarning,jdbcType=BIT},
+      </if>
+      <if test="returnFunction != null">
+        #{returnFunction,jdbcType=TINYINT},
+      </if>
+      <if test="returnStatus != null">
+        #{returnStatus,jdbcType=BIT},
+      </if>
+      <if test="returnData != null">
+        #{returnData,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lyap.entity.HeartbeatRecordExample" resultType="java.lang.Long">
+    select count(*) from heartbeat_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update heartbeat_record
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.gatewayboxId != null">
+        gatewaybox_id = #{record.gatewayboxId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.heartbeatTime != null">
+        heartbeat_time = #{record.heartbeatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dooroperationRecordId != null">
+        dooroperation_record_id = #{record.dooroperationRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="record.powerdownWarning != null">
+        powerdown_warning = #{record.powerdownWarning,jdbcType=BIT},
+      </if>
+      <if test="record.returnFunction != null">
+        return_function = #{record.returnFunction,jdbcType=TINYINT},
+      </if>
+      <if test="record.returnStatus != null">
+        return_status = #{record.returnStatus,jdbcType=BIT},
+      </if>
+      <if test="record.returnData != null">
+        return_data = #{record.returnData,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null">
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update heartbeat_record
+    set id = #{record.id,jdbcType=INTEGER},
+      gatewaybox_id = #{record.gatewayboxId,jdbcType=VARCHAR},
+      heartbeat_time = #{record.heartbeatTime,jdbcType=TIMESTAMP},
+      dooroperation_record_id = #{record.dooroperationRecordId,jdbcType=INTEGER},
+      powerdown_warning = #{record.powerdownWarning,jdbcType=BIT},
+      return_function = #{record.returnFunction,jdbcType=TINYINT},
+      return_status = #{record.returnStatus,jdbcType=BIT},
+      return_data = #{record.returnData,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyap.entity.HeartbeatRecord">
+    update heartbeat_record
+    <set>
+      <if test="gatewayboxId != null">
+        gatewaybox_id = #{gatewayboxId,jdbcType=VARCHAR},
+      </if>
+      <if test="heartbeatTime != null">
+        heartbeat_time = #{heartbeatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dooroperationRecordId != null">
+        dooroperation_record_id = #{dooroperationRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="powerdownWarning != null">
+        powerdown_warning = #{powerdownWarning,jdbcType=BIT},
+      </if>
+      <if test="returnFunction != null">
+        return_function = #{returnFunction,jdbcType=TINYINT},
+      </if>
+      <if test="returnStatus != null">
+        return_status = #{returnStatus,jdbcType=BIT},
+      </if>
+      <if test="returnData != null">
+        return_data = #{returnData,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyap.entity.HeartbeatRecord">
+    update heartbeat_record
+    set gatewaybox_id = #{gatewayboxId,jdbcType=VARCHAR},
+      heartbeat_time = #{heartbeatTime,jdbcType=TIMESTAMP},
+      dooroperation_record_id = #{dooroperationRecordId,jdbcType=INTEGER},
+      powerdown_warning = #{powerdownWarning,jdbcType=BIT},
+      return_function = #{returnFunction,jdbcType=TINYINT},
+      return_status = #{returnStatus,jdbcType=BIT},
+      return_data = #{returnData,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
