@@ -38,7 +38,6 @@
         <table tableName="gatewaybox" domainObjectName="GatewayBox"></table>
         <table tableName="command" domainObjectName="Command"></table>
         <table tableName="command_record" domainObjectName="CommandRecord"></table>
-        <table tableName="command_record" domainObjectName="CommandRecord"></table>
         <table tableName="dooroperation_record" domainObjectName="DoorPperationRecord"></table>
         <table tableName="heartbeat_record" domainObjectName="HeartbeatRecord"></table>
     </context>
