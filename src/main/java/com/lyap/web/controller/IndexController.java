@@ -10,9 +10,9 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/empty")
+    @RequestMapping("/emptyPage.htm")
     public String empty() {
-        return "empty";
+        return "emptyPage";
     }
 
 }

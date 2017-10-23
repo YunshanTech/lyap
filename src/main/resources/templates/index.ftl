@@ -19,6 +19,8 @@
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="${rc.contextPath}/assets/js/Lightweight-Chart/cssCharts.css">
+
+    <@includeX template="${target_view_name}_css.ftl" default_template="empty.ftl" />
 </head>
 
 <body>
@@ -79,7 +81,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:void(0)" onclick="loadPage('${rc.contextPath}/empty')" class="waves-effect waves-dark"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                    <a href="${rc.contextPath}/emptyPage.htm" class="waves-effect waves-dark"><i class="fa fa-fw fa-file"></i> Empty Page</a>
                 </li>
             </ul>
 
@@ -100,7 +102,7 @@
             </ol>
         </div>
         <div id="page-inner">
-
+            <@includeX template="${target_view_name}.ftl" default_template="empty.ftl" />
         </div>
         <!-- /. PAGE INNER  -->
     </div>
@@ -131,16 +133,7 @@
 <!-- Custom Js -->
 <script src="${rc.contextPath}/assets/js/custom-scripts.js"></script>
 
-
-<script>
-    function loadPage(url) {
-        $.get(url,function(data){
-            data = data.slice(data.indexOf('<body>')+6,data.indexOf('</body>'));
-            $("#page-inner").html(data);
-        });
-    }
-
-</script>
+<@includeX template="${target_view_name}_js.ftl" default_template="empty.ftl" />
 
 </body>
 </html>
