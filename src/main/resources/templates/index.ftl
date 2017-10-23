@@ -2,138 +2,255 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <base va />
     <meta charset="utf-8" />
+    <title>主页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Target Material Design Bootstrap Admin Template</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="${rc.contextPath}/assets/materialize/css/materialize.min.css" media="screen,projection" />
-    <!-- Bootstrap Styles-->
-    <link href="${rc.contextPath}/assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FontAwesome Styles-->
-    <link href="${rc.contextPath}/assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- Morris Chart Styles-->
-    <link href="${rc.contextPath}/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
-    <!-- Custom Styles-->
-    <link href="${rc.contextPath}/assets/css/custom-styles.css" rel="stylesheet" />
-    <!-- Google Fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="${rc.contextPath}/assets/js/Lightweight-Chart/cssCharts.css">
 
+    <!-- basic styles -->
+
+    <link href="${rc.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="${rc.contextPath}/assets/css/font-awesome.min.css" />
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="${rc.contextPath}/assets/css/font-awesome-ie7.min.css" />
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+
+    <!-- fonts -->
+
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="${rc.contextPath}/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="${rc.contextPath}/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="${rc.contextPath}/assets/css/ace-skins.min.css" />
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="${rc.contextPath}/assets/css/ace-ie.min.css" />
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
     <@includeX template="${target_view_name}_css.ftl" default_template="empty.ftl" />
+
+    <!-- ace settings handler -->
+
+    <script src="${rc.contextPath}/assets/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="${rc.contextPath}/assets/js/html5shiv.js"></script>
+    <script src="${rc.contextPath}/assets/js/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
-<div id="wrapper">
-    <nav class="navbar navbar-default top-navbar" role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand waves-effect waves-dark" href="index.html"><i class="large material-icons">track_changes</i> <strong>target</strong></a>
+<div class="navbar navbar-default" id="navbar">
+    <script type="text/javascript">
+        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+    </script>
 
-            <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
-        </div>
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>
+                    <i class="icon-leaf"></i>
+                    Admin
+                </small>
+            </a><!-- /.brand -->
+        </div><!-- /.navbar-header -->
 
-        <ul class="nav navbar-top-links navbar-right">
-            <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>John Doe</b> <i class="material-icons right">arrow_drop_down</i></a></li>
-        </ul>
-    </nav>
-    <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#"><i class="fa fa-user fa-fw"></i> My Profile</a></li>
-        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
-        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
-    </ul>
+        <div class="navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <li class="light-blue">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="${rc.contextPath}/assets/avatars/user.jpg" alt="Jason's Photo" />
+                        <span class="user-info">
+                            <small>Welcome,</small>
+                            Jason
+                        </span>
 
-    <!--/. NAV TOP  -->
-    <nav class="navbar-default navbar-side" role="navigation">
-        <div class="sidebar-collapse">
-            <ul class="nav" id="main-menu">
-                <li>
-                    <a href="#" class="waves-effect waves-dark"><i class="fa fa-sitemap"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
+                        <i class="icon-caret-down"></i>
+                    </a>
+
+                    <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a href="#">Second Level Link</a>
+                            <a href="#">
+                                <i class="icon-cog"></i>
+                                Settings
+                            </a>
                         </li>
+
                         <li>
-                            <a href="#">Second Level Link</a>
+                            <a href="#">
+                                <i class="icon-user"></i>
+                                Profile
+                            </a>
                         </li>
+
+                        <li class="divider"></li>
+
                         <li>
-                            <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                            <ul class="nav nav-third-level">
-                                <li>
-                                    <a href="#">Third Level Link</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level Link</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level Link</a>
-                                </li>
-
-                            </ul>
-
+                            <a href="#">
+                                <i class="icon-off"></i>
+                                Logout
+                            </a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="${rc.contextPath}/emptyPage.htm" class="waves-effect waves-dark"><i class="fa fa-fw fa-file"></i> Empty Page</a>
-                </li>
-            </ul>
-
-        </div>
-
-    </nav>
-    <!-- /. NAV SIDE  -->
-
-    <div id="page-wrapper">
-        <div class="header">
-            <h1 class="page-header">
-                Dashboard
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Dashboard</a></li>
-                <li class="active">Data</li>
-            </ol>
-        </div>
-        <div id="page-inner">
-            <@includeX template="${target_view_name}.ftl" default_template="empty.ftl" />
-        </div>
-        <!-- /. PAGE INNER  -->
-    </div>
-    <!-- /. PAGE WRAPPER  -->
+            </ul><!-- /.ace-nav -->
+        </div><!-- /.navbar-header -->
+    </div><!-- /.container -->
 </div>
-<!-- /. WRAPPER  -->
-<!-- JS Scripts-->
-<!-- jQuery Js -->
-<script src="${rc.contextPath}/assets/js/jquery-1.10.2.js"></script>
 
-<!-- Bootstrap Js -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    </script>
+
+    <div class="main-container-inner">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+        <div class="sidebar" id="sidebar">
+            <script type="text/javascript">
+                try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="nav nav-list" id="menu_bar">
+                <li>
+                    <a href="${rc.contextPath}/page1.htm">
+                        <i class="icon-dashboard"></i>
+                        <span class="menu-text"> 控制台 </span>
+                    </a>
+                </li>
+
+                <li id="aaaaaa">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-file-alt"></i>
+
+                        <span class="menu-text">
+                            其他页面
+                        </span>
+
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="${rc.contextPath}/page2.htm">
+                                <i class="icon-double-angle-right"></i>
+                                网格
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="${rc.contextPath}/page3.htm">
+                                <i class="icon-double-angle-right"></i>
+                                空白页面
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul><!-- /.nav-list -->
+
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+            </div>
+
+            <script type="text/javascript">
+                try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+            </script>
+        </div>
+
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                </script>
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        <a href="#">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Other Pages</a>
+                    </li>
+                    <li class="active">Blank Page</li>
+                </ul><!-- .breadcrumb -->
+            </div>
+
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <@includeX template="${target_view_name}.ftl" default_template="empty.ftl" />
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+    </div><!-- /.main-container-inner -->
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+
+<!--[if !IE]> -->
+
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='${rc.contextPath}/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+</script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='${rc.contextPath}/assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+    if("ontouchend" in document) document.write("<script src='${rc.contextPath}/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
 <script src="${rc.contextPath}/assets/js/bootstrap.min.js"></script>
+<script src="${rc.contextPath}/assets/js/typeahead-bs2.min.js"></script>
 
-<script src="${rc.contextPath}/assets/materialize/js/materialize.min.js"></script>
+<!-- page specific plugin scripts -->
 
-<!-- Metis Menu Js -->
-<script src="${rc.contextPath}/assets/js/jquery.metisMenu.js"></script>
-<!-- Morris Chart Js -->
-<script src="${rc.contextPath}/assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="${rc.contextPath}/assets/js/morris/morris.js"></script>
+<!-- ace scripts -->
 
+<script src="${rc.contextPath}/assets/js/ace-elements.min.js"></script>
+<script src="${rc.contextPath}/assets/js/ace.min.js"></script>
 
-<script src="${rc.contextPath}/assets/js/easypiechart.js"></script>
-<script src="${rc.contextPath}/assets/js/easypiechart-data.js"></script>
-
-<script src="${rc.contextPath}/assets/js/Lightweight-Chart/jquery.chart.js"></script>
-
-<!-- Custom Js -->
-<script src="${rc.contextPath}/assets/js/custom-scripts.js"></script>
-
+<!-- inline scripts related to this page -->
 <@includeX template="${target_view_name}_js.ftl" default_template="empty.ftl" />
 
+<script type="text/javascript">
+    $(function () {
+        var current_url = window.location.href;
+        var target_url = current_url.substring(current_url.indexOf('${rc.contextPath}'), current_url.indexOf('.htm') + 4);
+        $('#menu_bar').find('a').each(function() {
+            if($(this).attr('href') == target_url) {
+                var obj = $(this).parent('li');
+                if(obj != undefined) {
+                    obj.addClass('active');
+                    obj = obj.parents('li');
+                    if(obj != undefined) {
+                        obj.addClass('active open');
+                    }
+                }
+                return false;
+            }
+        });
+    });
+</script>
 </body>
 </html>
