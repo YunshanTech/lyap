@@ -126,7 +126,7 @@
                     </a>
                 </li>
 
-                <li id="aaaaaa">
+                <li>
                     <a href="#" class="dropdown-toggle">
                         <i class="icon-file-alt"></i>
 
@@ -176,10 +176,12 @@
                         <a href="#">Home</a>
                     </li>
 
-                    <li>
-                        <a href="#">Other Pages</a>
+                    <li id="idx_1">
+                        <a href="#"></a>
                     </li>
-                    <li class="active">Blank Page</li>
+                    <li id="idx_2">
+                        <a href="#"></a>
+                    </li>
                 </ul><!-- .breadcrumb -->
             </div>
 
@@ -236,15 +238,31 @@
 <script type="text/javascript">
     $(function () {
         var current_url = window.location.href;
-        var target_url = current_url.substring(current_url.indexOf('${rc.contextPath}'), current_url.indexOf('.htm') + 4);
+        var target_url = current_url.substring(current_url.indexOf('${rc.contextPath}'));
         $('#menu_bar').find('a').each(function() {
-            if($(this).attr('href') == target_url) {
+            if($(this).attr('href') === target_url) {
                 var obj = $(this).parent('li');
-                if(obj != undefined) {
+                if(obj !== undefined) {
                     obj.addClass('active');
-                    obj = obj.parents('li');
-                    if(obj != undefined) {
-                        obj.addClass('active open');
+                    var objParent = obj.parents('li');
+                    if(objParent !== undefined && objParent.length > 0) {
+                        objParent.addClass('active open');
+                    }
+
+                    var text1 = '';
+                    var text2 = '';
+                    if(objParent === undefined || objParent.length === 0) {
+                        text1 = $.trim(obj.children('a').children('span.menu-text').text());
+                    } else {
+                        text2 = $.trim(obj.text());
+                        text1 = $.trim(objParent.children('a.dropdown-toggle').children('span.menu-text').text());
+                    }
+
+                    $('#idx_1').children('a').text(text1);
+                    if(text2 === '') {
+                        $('#idx_2').hide();
+                    } else {
+                        $('#idx_2').children('a').text(text2);
                     }
                 }
                 return false;
