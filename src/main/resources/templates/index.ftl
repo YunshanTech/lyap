@@ -238,7 +238,7 @@
 <script type="text/javascript">
     $(function () {
         var current_url = window.location.href;
-        var target_url = current_url.substring(current_url.indexOf('${rc.contextPath}'));
+        var target_url = current_url.substring(current_url.indexOf('${rc.contextPath}'), current_url.indexOf('.htm') + 4);
         $('#menu_bar').find('a').each(function() {
             if($(this).attr('href') === target_url) {
                 var obj = $(this).parent('li');
