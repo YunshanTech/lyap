@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8088
   context-path: /lyap/
 
 
@@ -30,7 +30,7 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxPoolPreparedStatementPerConnectionSize: 20
-    filters: stat,wall,log4j
+    filters: stat,wall,log4j2
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 
   freemarker:
@@ -39,7 +39,10 @@ spring:
     request-context-attribute: rc
 
 
-
 mybatis:
   mapper-locations: classpath:com/lyap/*/mapper/*.xml
   type-aliases-package: com.lyap.entity
+
+
+logging:
+  config: classpath:log4j2.yml

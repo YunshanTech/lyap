@@ -22,6 +22,6 @@ public class PrintTask {
 
     @Scheduled(cron = "0/20 * * * * ?") //每20s执行一次
     public void print() {
-        logger.info(dateFormat.get().format(new Date()));
+        logger.info("当前时间为：{}", dateFormat.get().format(new Date()));
     }
 }
