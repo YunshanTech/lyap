@@ -2,7 +2,7 @@ package com.lyap.entity;
 
 import java.util.Date;
 
-public class DoorPperationRecord {
+public class DoorOperationRecord {
     private Integer id;
 
     private Byte operationFunction;

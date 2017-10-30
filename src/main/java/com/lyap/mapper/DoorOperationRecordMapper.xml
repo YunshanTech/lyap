@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lyap.mapper.DoorPperationRecordMapper">
-  <resultMap id="BaseResultMap" type="com.lyap.entity.DoorPperationRecord">
+<mapper namespace="com.lyap.mapper.DoorOperationRecordMapper">
+  <resultMap id="BaseResultMap" type="com.lyap.entity.DoorOperationRecord">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="operation_function" jdbcType="TINYINT" property="operationFunction" />
     <result column="operation_description" jdbcType="VARCHAR" property="operationDescription" />
@@ -73,7 +73,10 @@
     id, operation_function, operation_description, operation_status, password, cardno, 
     time, remarks
   </sql>
-  <select id="selectByExample" parameterType="com.lyap.entity.DoorPperationRecordExample" resultMap="BaseResultMap">
+  <select id="selectMaxId" resultType="java.lang.Integer">
+   select LAST_INSERT_ID()
+  </select>
+  <select id="selectByExample" parameterType="com.lyap.entity.DoorOperationRecordExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -97,13 +100,13 @@
     delete from dooroperation_record
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.lyap.entity.DoorPperationRecordExample">
+  <delete id="deleteByExample" parameterType="com.lyap.entity.DoorOperationRecordExample">
     delete from dooroperation_record
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.lyap.entity.DoorPperationRecord">
+  <insert id="insert" parameterType="com.lyap.entity.DoorOperationRecord">
     insert into dooroperation_record (id, operation_function, operation_description, 
       operation_status, password, cardno, 
       time, remarks)
@@ -111,7 +114,7 @@
       #{operationStatus,jdbcType=BIT}, #{password,jdbcType=VARCHAR}, #{cardno,jdbcType=VARCHAR}, 
       #{time,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.lyap.entity.DoorPperationRecord">
+  <insert id="insertSelective" parameterType="com.lyap.entity.DoorOperationRecord">
     insert into dooroperation_record
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -166,7 +169,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.lyap.entity.DoorPperationRecordExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.lyap.entity.DoorOperationRecordExample" resultType="java.lang.Long">
     select count(*) from dooroperation_record
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -218,7 +221,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lyap.entity.DoorPperationRecord">
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyap.entity.DoorOperationRecord">
     update dooroperation_record
     <set>
       <if test="operationFunction != null">
@@ -245,7 +248,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lyap.entity.DoorPperationRecord">
+  <update id="updateByPrimaryKey" parameterType="com.lyap.entity.DoorOperationRecord">
     update dooroperation_record
     set operation_function = #{operationFunction,jdbcType=TINYINT},
       operation_description = #{operationDescription,jdbcType=VARCHAR},

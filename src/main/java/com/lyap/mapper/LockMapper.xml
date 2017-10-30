@@ -85,7 +85,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from lock
+    from locks
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,24 +93,28 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByLockId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from locks
+    where lock_id = #{lock_id, jdbcType=VARCHAR}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from lock
+    from locks
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from lock
+    delete from locks
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.lyap.entity.LockExample">
-    delete from lock
+    delete from locks
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.lyap.entity.Lock">
-    insert into lock (id, lock_id, power, 
+    insert into locks (id, lock_id, power,
       hardware_version, software_version, password1, 
       password2, cardno1, cardno2, 
       status, create_time, last_mod_time, 
@@ -122,7 +126,7 @@
       #{modUserId,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lyap.entity.Lock">
-    insert into lock
+    insert into locks
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -213,13 +217,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.lyap.entity.LockExample" resultType="java.lang.Long">
-    select count(*) from lock
+    select count(*) from locks
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update lock
+    update locks
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -269,7 +273,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update lock
+    update locks
     set id = #{record.id,jdbcType=INTEGER},
       lock_id = #{record.lockId,jdbcType=VARCHAR},
       power = #{record.power,jdbcType=VARCHAR},
@@ -289,7 +293,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.lyap.entity.Lock">
-    update lock
+    update locks
     <set>
       <if test="lockId != null">
         lock_id = #{lockId,jdbcType=VARCHAR},
@@ -334,7 +338,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lyap.entity.Lock">
-    update lock
+    update locks
     set lock_id = #{lockId,jdbcType=VARCHAR},
       power = #{power,jdbcType=VARCHAR},
       hardware_version = #{hardwareVersion,jdbcType=VARCHAR},

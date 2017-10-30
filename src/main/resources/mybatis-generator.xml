@@ -9,8 +9,8 @@
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
-        <!--数据库链接地址账号密码-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://120.27.93.16:3306/lyap" userId="eternal" password="eternal" />
+        <!--数据库链接地址账号密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://120.27.93.16:3306/lyap" userId="eternal" password="eternal"/>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
@@ -34,11 +34,11 @@
         </javaClientGenerator>
         <!--生成对应表及类名-->
         <table tableName="user" domainObjectName="User"></table>
-        <table tableName="lock" domainObjectName="Lock"></table>
+        <table tableName="locks" domainObjectName="Lock"></table>
         <table tableName="gatewaybox" domainObjectName="GatewayBox"></table>
         <table tableName="command" domainObjectName="Command"></table>
         <table tableName="command_record" domainObjectName="CommandRecord"></table>
-        <table tableName="dooroperation_record" domainObjectName="DoorPperationRecord"></table>
+        <table tableName="dooroperation_record" domainObjectName="DoorOperationRecord"></table>
         <table tableName="heartbeat_record" domainObjectName="HeartbeatRecord"></table>
     </context>
 </generatorConfiguration>

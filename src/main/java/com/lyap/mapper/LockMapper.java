@@ -18,6 +18,8 @@ public interface LockMapper {
 
     List<Lock> selectByExample(LockExample example);
 
+    Lock selectByLockId(String lockId);
+
     Lock selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Lock record, @Param("example") LockExample example);

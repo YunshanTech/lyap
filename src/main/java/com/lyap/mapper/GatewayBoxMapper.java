@@ -18,6 +18,8 @@ public interface GatewayBoxMapper {
 
     List<GatewayBox> selectByExample(GatewayBoxExample example);
 
+    GatewayBox selectByGatewayBoxId(String gatewayBoxId);
+
     GatewayBox selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") GatewayBox record, @Param("example") GatewayBoxExample example);

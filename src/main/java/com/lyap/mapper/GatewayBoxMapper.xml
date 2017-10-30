@@ -90,6 +90,10 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByGatewayBoxId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from gatewaybox
+    where gatewaybox_id = #{gatewaybox_id, jdbcType=VARCHAR}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
