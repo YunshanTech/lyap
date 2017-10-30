@@ -17,6 +17,8 @@ public class GatewayBox {
 
     private Boolean status;
 
+    private String gatewayboxCommunicationcode;
+
     private Date createTime;
 
     private Date lastModTime;
@@ -79,6 +81,14 @@ public class GatewayBox {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public String getGatewayboxCommunicationcode() {
+        return gatewayboxCommunicationcode;
+    }
+
+    public void setGatewayboxCommunicationcode(String gatewayboxCommunicationcode) {
+        this.gatewayboxCommunicationcode = gatewayboxCommunicationcode;
     }
 
     public Date getCreateTime() {

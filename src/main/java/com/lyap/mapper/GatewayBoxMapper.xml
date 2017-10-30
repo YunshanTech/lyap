@@ -9,6 +9,7 @@
     <result column="software_version" jdbcType="VARCHAR" property="softwareVersion" />
     <result column="related_lock_id" jdbcType="VARCHAR" property="relatedLockId" />
     <result column="status" jdbcType="BIT" property="status" />
+    <result column="gatewaybox_communicationcode" jdbcType="VARCHAR" property="gatewayboxCommunicationcode" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="last_mod_time" jdbcType="TIMESTAMP" property="lastModTime" />
     <result column="mod_user_id" jdbcType="VARCHAR" property="modUserId" />
@@ -74,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, gatewaybox_id, product_code, hardware_version, software_version, related_lock_id, 
-    status, create_time, last_mod_time, mod_user_id, remarks
+    status, gatewaybox_communicationcode, create_time, last_mod_time, mod_user_id, remarks
   </sql>
   <select id="selectByExample" parameterType="com.lyap.entity.GatewayBoxExample" resultMap="BaseResultMap">
     select
@@ -113,12 +114,14 @@
   <insert id="insert" parameterType="com.lyap.entity.GatewayBox">
     insert into gatewaybox (id, gatewaybox_id, product_code, 
       hardware_version, software_version, related_lock_id, 
-      status, create_time, last_mod_time, 
-      mod_user_id, remarks)
+      status, gatewaybox_communicationcode, create_time, 
+      last_mod_time, mod_user_id, remarks
+      )
     values (#{id,jdbcType=INTEGER}, #{gatewayboxId,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, 
       #{hardwareVersion,jdbcType=VARCHAR}, #{softwareVersion,jdbcType=VARCHAR}, #{relatedLockId,jdbcType=VARCHAR}, 
-      #{status,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{lastModTime,jdbcType=TIMESTAMP}, 
-      #{modUserId,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR})
+      #{status,jdbcType=BIT}, #{gatewayboxCommunicationcode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastModTime,jdbcType=TIMESTAMP}, #{modUserId,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lyap.entity.GatewayBox">
     insert into gatewaybox
@@ -143,6 +146,9 @@
       </if>
       <if test="status != null">
         status,
+      </if>
+      <if test="gatewayboxCommunicationcode != null">
+        gatewaybox_communicationcode,
       </if>
       <if test="createTime != null">
         create_time,
@@ -178,6 +184,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=BIT},
+      </if>
+      <if test="gatewayboxCommunicationcode != null">
+        #{gatewayboxCommunicationcode,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -223,6 +232,9 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=BIT},
       </if>
+      <if test="record.gatewayboxCommunicationcode != null">
+        gatewaybox_communicationcode = #{record.gatewayboxCommunicationcode,jdbcType=VARCHAR},
+      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -249,6 +261,7 @@
       software_version = #{record.softwareVersion,jdbcType=VARCHAR},
       related_lock_id = #{record.relatedLockId,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=BIT},
+      gatewaybox_communicationcode = #{record.gatewayboxCommunicationcode,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       last_mod_time = #{record.lastModTime,jdbcType=TIMESTAMP},
       mod_user_id = #{record.modUserId,jdbcType=VARCHAR},
@@ -278,6 +291,9 @@
       <if test="status != null">
         status = #{status,jdbcType=BIT},
       </if>
+      <if test="gatewayboxCommunicationcode != null">
+        gatewaybox_communicationcode = #{gatewayboxCommunicationcode,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -301,6 +317,7 @@
       software_version = #{softwareVersion,jdbcType=VARCHAR},
       related_lock_id = #{relatedLockId,jdbcType=VARCHAR},
       status = #{status,jdbcType=BIT},
+      gatewaybox_communicationcode = #{gatewayboxCommunicationcode,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       last_mod_time = #{lastModTime,jdbcType=TIMESTAMP},
       mod_user_id = #{modUserId,jdbcType=VARCHAR},

@@ -575,6 +575,76 @@ public class GatewayBoxExample {
             return (Criteria) this;
         }
 
+        public Criteria andGatewayboxCommunicationcodeIsNull() {
+            addCriterion("gatewaybox_communicationcode is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeIsNotNull() {
+            addCriterion("gatewaybox_communicationcode is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeEqualTo(String value) {
+            addCriterion("gatewaybox_communicationcode =", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeNotEqualTo(String value) {
+            addCriterion("gatewaybox_communicationcode <>", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeGreaterThan(String value) {
+            addCriterion("gatewaybox_communicationcode >", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeGreaterThanOrEqualTo(String value) {
+            addCriterion("gatewaybox_communicationcode >=", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeLessThan(String value) {
+            addCriterion("gatewaybox_communicationcode <", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeLessThanOrEqualTo(String value) {
+            addCriterion("gatewaybox_communicationcode <=", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeLike(String value) {
+            addCriterion("gatewaybox_communicationcode like", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeNotLike(String value) {
+            addCriterion("gatewaybox_communicationcode not like", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeIn(List<String> values) {
+            addCriterion("gatewaybox_communicationcode in", values, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeNotIn(List<String> values) {
+            addCriterion("gatewaybox_communicationcode not in", values, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeBetween(String value1, String value2) {
+            addCriterion("gatewaybox_communicationcode between", value1, value2, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeNotBetween(String value1, String value2) {
+            addCriterion("gatewaybox_communicationcode not between", value1, value2, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeIsNull() {
             addCriterion("create_time is null");
             return (Criteria) this;

@@ -6,6 +6,11 @@
     <result column="command_function" jdbcType="TINYINT" property="commandFunction" />
     <result column="return_data" jdbcType="VARCHAR" property="returnData" />
     <result column="return_status" jdbcType="BIT" property="returnStatus" />
+    <result column="manager_password" jdbcType="VARCHAR" property="managerPassword" />
+    <result column="guest_password" jdbcType="VARCHAR" property="guestPassword" />
+    <result column="cardno" jdbcType="VARCHAR" property="cardno" />
+    <result column="lock_status" jdbcType="BIT" property="lockStatus" />
+    <result column="gatewaybox_communicationcode" jdbcType="VARCHAR" property="gatewayboxCommunicationcode" />
     <result column="time" jdbcType="TIMESTAMP" property="time" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
   </resultMap>
@@ -68,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, command_function, return_data, return_status, time, remarks
+    id, command_function, return_data, return_status, manager_password, guest_password, 
+    cardno, lock_status, gatewaybox_communicationcode, time, remarks
   </sql>
   <select id="selectByExample" parameterType="com.lyap.entity.CommandRecordExample" resultMap="BaseResultMap">
     select
@@ -102,11 +108,13 @@
   </delete>
   <insert id="insert" parameterType="com.lyap.entity.CommandRecord">
     insert into command_record (id, command_function, return_data, 
-      return_status, time, remarks
-      )
+      return_status, manager_password, guest_password, 
+      cardno, lock_status, gatewaybox_communicationcode, 
+      time, remarks)
     values (#{id,jdbcType=INTEGER}, #{commandFunction,jdbcType=TINYINT}, #{returnData,jdbcType=VARCHAR}, 
-      #{returnStatus,jdbcType=BIT}, #{time,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}
-      )
+      #{returnStatus,jdbcType=BIT}, #{managerPassword,jdbcType=VARCHAR}, #{guestPassword,jdbcType=VARCHAR}, 
+      #{cardno,jdbcType=VARCHAR}, #{lockStatus,jdbcType=BIT}, #{gatewayboxCommunicationcode,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lyap.entity.CommandRecord">
     insert into command_record
@@ -122,6 +130,21 @@
       </if>
       <if test="returnStatus != null">
         return_status,
+      </if>
+      <if test="managerPassword != null">
+        manager_password,
+      </if>
+      <if test="guestPassword != null">
+        guest_password,
+      </if>
+      <if test="cardno != null">
+        cardno,
+      </if>
+      <if test="lockStatus != null">
+        lock_status,
+      </if>
+      <if test="gatewayboxCommunicationcode != null">
+        gatewaybox_communicationcode,
       </if>
       <if test="time != null">
         time,
@@ -142,6 +165,21 @@
       </if>
       <if test="returnStatus != null">
         #{returnStatus,jdbcType=BIT},
+      </if>
+      <if test="managerPassword != null">
+        #{managerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="guestPassword != null">
+        #{guestPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno != null">
+        #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="lockStatus != null">
+        #{lockStatus,jdbcType=BIT},
+      </if>
+      <if test="gatewayboxCommunicationcode != null">
+        #{gatewayboxCommunicationcode,jdbcType=VARCHAR},
       </if>
       <if test="time != null">
         #{time,jdbcType=TIMESTAMP},
@@ -172,6 +210,21 @@
       <if test="record.returnStatus != null">
         return_status = #{record.returnStatus,jdbcType=BIT},
       </if>
+      <if test="record.managerPassword != null">
+        manager_password = #{record.managerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guestPassword != null">
+        guest_password = #{record.guestPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardno != null">
+        cardno = #{record.cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lockStatus != null">
+        lock_status = #{record.lockStatus,jdbcType=BIT},
+      </if>
+      <if test="record.gatewayboxCommunicationcode != null">
+        gatewaybox_communicationcode = #{record.gatewayboxCommunicationcode,jdbcType=VARCHAR},
+      </if>
       <if test="record.time != null">
         time = #{record.time,jdbcType=TIMESTAMP},
       </if>
@@ -189,6 +242,11 @@
       command_function = #{record.commandFunction,jdbcType=TINYINT},
       return_data = #{record.returnData,jdbcType=VARCHAR},
       return_status = #{record.returnStatus,jdbcType=BIT},
+      manager_password = #{record.managerPassword,jdbcType=VARCHAR},
+      guest_password = #{record.guestPassword,jdbcType=VARCHAR},
+      cardno = #{record.cardno,jdbcType=VARCHAR},
+      lock_status = #{record.lockStatus,jdbcType=BIT},
+      gatewaybox_communicationcode = #{record.gatewayboxCommunicationcode,jdbcType=VARCHAR},
       time = #{record.time,jdbcType=TIMESTAMP},
       remarks = #{record.remarks,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -207,6 +265,21 @@
       <if test="returnStatus != null">
         return_status = #{returnStatus,jdbcType=BIT},
       </if>
+      <if test="managerPassword != null">
+        manager_password = #{managerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="guestPassword != null">
+        guest_password = #{guestPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno != null">
+        cardno = #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="lockStatus != null">
+        lock_status = #{lockStatus,jdbcType=BIT},
+      </if>
+      <if test="gatewayboxCommunicationcode != null">
+        gatewaybox_communicationcode = #{gatewayboxCommunicationcode,jdbcType=VARCHAR},
+      </if>
       <if test="time != null">
         time = #{time,jdbcType=TIMESTAMP},
       </if>
@@ -221,6 +294,11 @@
     set command_function = #{commandFunction,jdbcType=TINYINT},
       return_data = #{returnData,jdbcType=VARCHAR},
       return_status = #{returnStatus,jdbcType=BIT},
+      manager_password = #{managerPassword,jdbcType=VARCHAR},
+      guest_password = #{guestPassword,jdbcType=VARCHAR},
+      cardno = #{cardno,jdbcType=VARCHAR},
+      lock_status = #{lockStatus,jdbcType=BIT},
+      gatewaybox_communicationcode = #{gatewayboxCommunicationcode,jdbcType=VARCHAR},
       time = #{time,jdbcType=TIMESTAMP},
       remarks = #{remarks,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
