@@ -355,6 +355,346 @@ public class CommandRecordExample {
             return (Criteria) this;
         }
 
+        public Criteria andManagerPasswordIsNull() {
+            addCriterion("manager_password is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordIsNotNull() {
+            addCriterion("manager_password is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordEqualTo(String value) {
+            addCriterion("manager_password =", value, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordNotEqualTo(String value) {
+            addCriterion("manager_password <>", value, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordGreaterThan(String value) {
+            addCriterion("manager_password >", value, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordGreaterThanOrEqualTo(String value) {
+            addCriterion("manager_password >=", value, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordLessThan(String value) {
+            addCriterion("manager_password <", value, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordLessThanOrEqualTo(String value) {
+            addCriterion("manager_password <=", value, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordLike(String value) {
+            addCriterion("manager_password like", value, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordNotLike(String value) {
+            addCriterion("manager_password not like", value, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordIn(List<String> values) {
+            addCriterion("manager_password in", values, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordNotIn(List<String> values) {
+            addCriterion("manager_password not in", values, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordBetween(String value1, String value2) {
+            addCriterion("manager_password between", value1, value2, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andManagerPasswordNotBetween(String value1, String value2) {
+            addCriterion("manager_password not between", value1, value2, "managerPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordIsNull() {
+            addCriterion("guest_password is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordIsNotNull() {
+            addCriterion("guest_password is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordEqualTo(String value) {
+            addCriterion("guest_password =", value, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordNotEqualTo(String value) {
+            addCriterion("guest_password <>", value, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordGreaterThan(String value) {
+            addCriterion("guest_password >", value, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordGreaterThanOrEqualTo(String value) {
+            addCriterion("guest_password >=", value, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordLessThan(String value) {
+            addCriterion("guest_password <", value, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordLessThanOrEqualTo(String value) {
+            addCriterion("guest_password <=", value, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordLike(String value) {
+            addCriterion("guest_password like", value, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordNotLike(String value) {
+            addCriterion("guest_password not like", value, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordIn(List<String> values) {
+            addCriterion("guest_password in", values, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordNotIn(List<String> values) {
+            addCriterion("guest_password not in", values, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordBetween(String value1, String value2) {
+            addCriterion("guest_password between", value1, value2, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andGuestPasswordNotBetween(String value1, String value2) {
+            addCriterion("guest_password not between", value1, value2, "guestPassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoIsNull() {
+            addCriterion("cardno is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoIsNotNull() {
+            addCriterion("cardno is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoEqualTo(String value) {
+            addCriterion("cardno =", value, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoNotEqualTo(String value) {
+            addCriterion("cardno <>", value, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoGreaterThan(String value) {
+            addCriterion("cardno >", value, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoGreaterThanOrEqualTo(String value) {
+            addCriterion("cardno >=", value, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoLessThan(String value) {
+            addCriterion("cardno <", value, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoLessThanOrEqualTo(String value) {
+            addCriterion("cardno <=", value, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoLike(String value) {
+            addCriterion("cardno like", value, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoNotLike(String value) {
+            addCriterion("cardno not like", value, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoIn(List<String> values) {
+            addCriterion("cardno in", values, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoNotIn(List<String> values) {
+            addCriterion("cardno not in", values, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoBetween(String value1, String value2) {
+            addCriterion("cardno between", value1, value2, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andCardnoNotBetween(String value1, String value2) {
+            addCriterion("cardno not between", value1, value2, "cardno");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusIsNull() {
+            addCriterion("lock_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusIsNotNull() {
+            addCriterion("lock_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusEqualTo(Boolean value) {
+            addCriterion("lock_status =", value, "lockStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusNotEqualTo(Boolean value) {
+            addCriterion("lock_status <>", value, "lockStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusGreaterThan(Boolean value) {
+            addCriterion("lock_status >", value, "lockStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("lock_status >=", value, "lockStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusLessThan(Boolean value) {
+            addCriterion("lock_status <", value, "lockStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusLessThanOrEqualTo(Boolean value) {
+            addCriterion("lock_status <=", value, "lockStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusIn(List<Boolean> values) {
+            addCriterion("lock_status in", values, "lockStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusNotIn(List<Boolean> values) {
+            addCriterion("lock_status not in", values, "lockStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusBetween(Boolean value1, Boolean value2) {
+            addCriterion("lock_status between", value1, value2, "lockStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStatusNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("lock_status not between", value1, value2, "lockStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeIsNull() {
+            addCriterion("gatewaybox_communicationcode is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeIsNotNull() {
+            addCriterion("gatewaybox_communicationcode is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeEqualTo(String value) {
+            addCriterion("gatewaybox_communicationcode =", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeNotEqualTo(String value) {
+            addCriterion("gatewaybox_communicationcode <>", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeGreaterThan(String value) {
+            addCriterion("gatewaybox_communicationcode >", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeGreaterThanOrEqualTo(String value) {
+            addCriterion("gatewaybox_communicationcode >=", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeLessThan(String value) {
+            addCriterion("gatewaybox_communicationcode <", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeLessThanOrEqualTo(String value) {
+            addCriterion("gatewaybox_communicationcode <=", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeLike(String value) {
+            addCriterion("gatewaybox_communicationcode like", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeNotLike(String value) {
+            addCriterion("gatewaybox_communicationcode not like", value, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeIn(List<String> values) {
+            addCriterion("gatewaybox_communicationcode in", values, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeNotIn(List<String> values) {
+            addCriterion("gatewaybox_communicationcode not in", values, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeBetween(String value1, String value2) {
+            addCriterion("gatewaybox_communicationcode between", value1, value2, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatewayboxCommunicationcodeNotBetween(String value1, String value2) {
+            addCriterion("gatewaybox_communicationcode not between", value1, value2, "gatewayboxCommunicationcode");
+            return (Criteria) this;
+        }
+
         public Criteria andTimeIsNull() {
             addCriterion("time is null");
             return (Criteria) this;

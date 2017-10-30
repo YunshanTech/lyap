@@ -11,6 +11,16 @@ public class CommandRecord {
 
     private Boolean returnStatus;
 
+    private String managerPassword;
+
+    private String guestPassword;
+
+    private String cardno;
+
+    private Boolean lockStatus;
+
+    private String gatewayboxCommunicationcode;
+
     private Date time;
 
     private String remarks;
@@ -45,6 +55,46 @@ public class CommandRecord {
 
     public void setReturnStatus(Boolean returnStatus) {
         this.returnStatus = returnStatus;
+    }
+
+    public String getManagerPassword() {
+        return managerPassword;
+    }
+
+    public void setManagerPassword(String managerPassword) {
+        this.managerPassword = managerPassword;
+    }
+
+    public String getGuestPassword() {
+        return guestPassword;
+    }
+
+    public void setGuestPassword(String guestPassword) {
+        this.guestPassword = guestPassword;
+    }
+
+    public String getCardno() {
+        return cardno;
+    }
+
+    public void setCardno(String cardno) {
+        this.cardno = cardno;
+    }
+
+    public Boolean getLockStatus() {
+        return lockStatus;
+    }
+
+    public void setLockStatus(Boolean lockStatus) {
+        this.lockStatus = lockStatus;
+    }
+
+    public String getGatewayboxCommunicationcode() {
+        return gatewayboxCommunicationcode;
+    }
+
+    public void setGatewayboxCommunicationcode(String gatewayboxCommunicationcode) {
+        this.gatewayboxCommunicationcode = gatewayboxCommunicationcode;
     }
 
     public Date getTime() {
