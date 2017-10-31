@@ -83,6 +83,7 @@ CREATE TABLE
     `lyap`.command_record
     (
         id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+        gatewaybox_id VARCHAR(8) NOT NULL COMMENT '网关盒序号',
         command_function TINYINT(2) NOT NULL COMMENT '命令类型',
         return_data VARCHAR(24) COMMENT '返回值(非必填)',
         return_status TINYINT(1) NOT NULL COMMENT '返回状态',
