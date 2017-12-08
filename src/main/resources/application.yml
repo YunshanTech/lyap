@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8080
   context-path: /lyap/
 
 
@@ -44,5 +44,10 @@ mybatis:
   type-aliases-package: com.lyap.entity
 
 
+
 logging:
   config: classpath:log4j2.yml
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface DemoMapper {
     List<Demo> findAll();
+    Long countAll();
 }

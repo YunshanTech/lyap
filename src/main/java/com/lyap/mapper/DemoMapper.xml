@@ -15,5 +15,9 @@
         select * from `demo`
     </select>
 
+    <select id="countAll" resultType="java.lang.Long">
+        select count(*) from `demo`
+    </select>
+
 
 </mapper>

@@ -45,7 +45,7 @@ public class Application {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
-                registry.addInterceptor(new PageInterceptor()).addPathPatterns("/**.htm");
+                registry.addInterceptor(new PageInterceptor()).addPathPatterns("/**/*.htm");
                 super.addInterceptors(registry);
             }
         };

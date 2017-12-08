@@ -19,9 +19,13 @@ public class PageInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o,
                            ModelAndView modelAndView) throws Exception {
-        String viewName = modelAndView.getViewName();
-        modelAndView.addObject("target_view_name", viewName);
-        modelAndView.setViewName("index");
+        boolean isAjax = "XMLHttpRequest".equals(httpServletRequest.getHeader("X-Requested-With"));
+
+        if(!isAjax) {
+            String viewName = modelAndView.getViewName();
+            modelAndView.addObject("target_view_name", viewName);
+            modelAndView.setViewName("index");
+        }
     }
 
     @Override

@@ -30,7 +30,7 @@
     <![endif]-->
 
     <!-- inline styles related to this page -->
-    <@includeX template="${target_view_name}_css.ftl" default_template="empty.ftl" />
+    <@includeX template="${target_view_name!}_css.ftl" default_template="empty.ftl" />
 
     <!-- ace settings handler -->
 
@@ -120,9 +120,9 @@
 
             <ul class="nav nav-list" id="menu_bar">
                 <li>
-                    <a href="${rc.contextPath}/page1.htm">
+                    <a href="${rc.contextPath}/command/list.htm">
                         <i class="icon-dashboard"></i>
-                        <span class="menu-text"> 控制台 </span>
+                        <span class="menu-text"> 命令管理 </span>
                     </a>
                 </li>
 
@@ -141,14 +141,14 @@
                         <li>
                             <a href="${rc.contextPath}/page2.htm">
                                 <i class="icon-double-angle-right"></i>
-                                网格
+                                二级页面1
                             </a>
                         </li>
 
                         <li>
                             <a href="${rc.contextPath}/page3.htm">
                                 <i class="icon-double-angle-right"></i>
-                                空白页面
+                                二级页面2
                             </a>
                         </li>
                     </ul>
@@ -189,7 +189,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <@includeX template="${target_view_name}.ftl" default_template="empty.ftl" />
+                        <@includeX template="${target_view_name!}.ftl" default_template="empty.ftl" />
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -200,6 +200,26 @@
     <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
         <i class="icon-double-angle-up icon-only bigger-110"></i>
     </a>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalTitle"></h4>
+                </div>
+                <div class="modal-body" id="modalBody">
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="modalButton">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div><!-- /.main-container -->
 
 <!-- basic scripts -->
@@ -232,8 +252,10 @@
 <script src="${rc.contextPath}/assets/js/ace-elements.min.js"></script>
 <script src="${rc.contextPath}/assets/js/ace.min.js"></script>
 
+<script src="${rc.contextPath}/sweetAlert2/sweetalert2.all.js"></script>
+
 <!-- inline scripts related to this page -->
-<@includeX template="${target_view_name}_js.ftl" default_template="empty.ftl" />
+<@includeX template="${target_view_name!}_js.ftl" default_template="empty.ftl" />
 
 <script type="text/javascript">
     $(function () {
@@ -269,6 +291,79 @@
             }
         });
     });
+
+    function showModal(params) {
+        var load = false;
+        if(params !== undefined) {
+            if(params.title !== undefined)
+                $('#modalTitle').text(params.title);
+            if(params.buttonText !== undefined)
+                $('#modalButton').text(params.buttonText);
+            if(params.buttonFunction !== undefined)
+                $('#modalButton').click(params.buttonFunction);
+            if(params.url !== undefined) {
+                $('#modalBody').load(params.url, params.data, function(response, status, xhr) {
+                    $('#myModal').modal('show');
+                });
+                load = true;
+            }
+
+        }
+        if(load === false)
+            $('#myModal').modal('show');
+    }
+
+    function closeModal() {
+        $('#myModal').modal('hide');
+    }
+
+    function refreshTable() {
+        if(myDataTable !== undefined) {
+            myDataTable.draw(true);
+        }
+    }
+
+    function successAlert(title, msg, callBack) {
+        var sw = swal(
+            title,
+            msg,
+            'success'
+        );
+        if(callBack !== undefined) {
+            sw.then(function (result) {
+                callBack()
+            });
+        }
+    }
+
+    function errorAlert(title, msg, callBack) {
+        swal(
+            title,
+            msg,
+            'error'
+        );
+        if(callBack !== undefined) {
+            sw.then(function (result) {
+                callBack()
+            });
+        }
+    }
+
+    function confirmAlert(title, msg, callBack) {
+        swal({
+            title: title,
+            text: msg,
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then(function (result) {
+            if(result.value === true) {
+                callBack();
+            }
+        });
+    }
 </script>
 </body>
 </html>
