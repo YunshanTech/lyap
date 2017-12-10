@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyap.mapper.CommandRecordMapper">
+  <resultMap id="BaseResultMap" type="com.lyap.entity.CommandRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="command_function" jdbcType="TINYINT" property="commandFunction" />
+    <result column="return_data" jdbcType="VARCHAR" property="returnData" />
+    <result column="return_status" jdbcType="BIT" property="returnStatus" />
+    <result column="manager_password" jdbcType="VARCHAR" property="managerPassword" />
+    <result column="guest_password" jdbcType="VARCHAR" property="guestPassword" />
+    <result column="cardno" jdbcType="VARCHAR" property="cardno" />
+    <result column="lock_status" jdbcType="BIT" property="lockStatus" />
+    <result column="gatewaybox_communicationcode" jdbcType="VARCHAR" property="gatewayboxCommunicationcode" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, command_function, return_data, return_status, manager_password, guest_password, 
+    cardno, lock_status, gatewaybox_communicationcode, time, remarks
+  </sql>
+  <select id="selectByExample" parameterType="com.lyap.entity.CommandRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from command_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from command_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from command_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lyap.entity.CommandRecordExample">
+    delete from command_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lyap.entity.CommandRecord">
+    insert into command_record (id, command_function, return_data, 
+      return_status, manager_password, guest_password, 
+      cardno, lock_status, gatewaybox_communicationcode, 
+      time, remarks)
+    values (#{id,jdbcType=INTEGER}, #{commandFunction,jdbcType=TINYINT}, #{returnData,jdbcType=VARCHAR}, 
+      #{returnStatus,jdbcType=BIT}, #{managerPassword,jdbcType=VARCHAR}, #{guestPassword,jdbcType=VARCHAR}, 
+      #{cardno,jdbcType=VARCHAR}, #{lockStatus,jdbcType=BIT}, #{gatewayboxCommunicationcode,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyap.entity.CommandRecord">
+    insert into command_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="commandFunction != null">
+        command_function,
+      </if>
+      <if test="returnData != null">
+        return_data,
+      </if>
+      <if test="returnStatus != null">
+        return_status,
+      </if>
+      <if test="managerPassword != null">
+        manager_password,
+      </if>
+      <if test="guestPassword != null">
+        guest_password,
+      </if>
+      <if test="cardno != null">
+        cardno,
+      </if>
+      <if test="lockStatus != null">
+        lock_status,
+      </if>
+      <if test="gatewayboxCommunicationcode != null">
+        gatewaybox_communicationcode,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="commandFunction != null">
+        #{commandFunction,jdbcType=TINYINT},
+      </if>
+      <if test="returnData != null">
+        #{returnData,jdbcType=VARCHAR},
+      </if>
+      <if test="returnStatus != null">
+        #{returnStatus,jdbcType=BIT},
+      </if>
+      <if test="managerPassword != null">
+        #{managerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="guestPassword != null">
+        #{guestPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno != null">
+        #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="lockStatus != null">
+        #{lockStatus,jdbcType=BIT},
+      </if>
+      <if test="gatewayboxCommunicationcode != null">
+        #{gatewayboxCommunicationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lyap.entity.CommandRecordExample" resultType="java.lang.Long">
+    select count(*) from command_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update command_record
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.commandFunction != null">
+        command_function = #{record.commandFunction,jdbcType=TINYINT},
+      </if>
+      <if test="record.returnData != null">
+        return_data = #{record.returnData,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnStatus != null">
+        return_status = #{record.returnStatus,jdbcType=BIT},
+      </if>
+      <if test="record.managerPassword != null">
+        manager_password = #{record.managerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guestPassword != null">
+        guest_password = #{record.guestPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardno != null">
+        cardno = #{record.cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lockStatus != null">
+        lock_status = #{record.lockStatus,jdbcType=BIT},
+      </if>
+      <if test="record.gatewayboxCommunicationcode != null">
+        gatewaybox_communicationcode = #{record.gatewayboxCommunicationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null">
+        time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remarks != null">
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update command_record
+    set id = #{record.id,jdbcType=INTEGER},
+      command_function = #{record.commandFunction,jdbcType=TINYINT},
+      return_data = #{record.returnData,jdbcType=VARCHAR},
+      return_status = #{record.returnStatus,jdbcType=BIT},
+      manager_password = #{record.managerPassword,jdbcType=VARCHAR},
+      guest_password = #{record.guestPassword,jdbcType=VARCHAR},
+      cardno = #{record.cardno,jdbcType=VARCHAR},
+      lock_status = #{record.lockStatus,jdbcType=BIT},
+      gatewaybox_communicationcode = #{record.gatewayboxCommunicationcode,jdbcType=VARCHAR},
+      time = #{record.time,jdbcType=TIMESTAMP},
+      remarks = #{record.remarks,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyap.entity.CommandRecord">
+    update command_record
+    <set>
+      <if test="commandFunction != null">
+        command_function = #{commandFunction,jdbcType=TINYINT},
+      </if>
+      <if test="returnData != null">
+        return_data = #{returnData,jdbcType=VARCHAR},
+      </if>
+      <if test="returnStatus != null">
+        return_status = #{returnStatus,jdbcType=BIT},
+      </if>
+      <if test="managerPassword != null">
+        manager_password = #{managerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="guestPassword != null">
+        guest_password = #{guestPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno != null">
+        cardno = #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="lockStatus != null">
+        lock_status = #{lockStatus,jdbcType=BIT},
+      </if>
+      <if test="gatewayboxCommunicationcode != null">
+        gatewaybox_communicationcode = #{gatewayboxCommunicationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyap.entity.CommandRecord">
+    update command_record
+    set command_function = #{commandFunction,jdbcType=TINYINT},
+      return_data = #{returnData,jdbcType=VARCHAR},
+      return_status = #{returnStatus,jdbcType=BIT},
+      manager_password = #{managerPassword,jdbcType=VARCHAR},
+      guest_password = #{guestPassword,jdbcType=VARCHAR},
+      cardno = #{cardno,jdbcType=VARCHAR},
+      lock_status = #{lockStatus,jdbcType=BIT},
+      gatewaybox_communicationcode = #{gatewayboxCommunicationcode,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
