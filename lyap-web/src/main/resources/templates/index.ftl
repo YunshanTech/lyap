@@ -120,6 +120,13 @@
 
             <ul class="nav nav-list" id="menu_bar">
                 <li>
+                    <a href="${rc.contextPath}/tcpConnection/list.htm">
+                        <i class="icon-dashboard"></i>
+                        <span class="menu-text"> Tcp连接管理 </span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="${rc.contextPath}/command/list.htm">
                         <i class="icon-dashboard"></i>
                         <span class="menu-text"> 命令管理 </span>

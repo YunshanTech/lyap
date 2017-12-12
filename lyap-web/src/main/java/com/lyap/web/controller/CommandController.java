@@ -1,6 +1,7 @@
 package com.lyap.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lyap.common.DateFormatUtil;
 import com.lyap.entity.Command;
 import com.lyap.entity.CommandExample;
 import com.lyap.page.PageResult;
@@ -21,8 +22,6 @@ import java.util.List;
 
 @Controller
 public class CommandController {
-    private ThreadLocal<DateFormat> dataFormatThreadLocal = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
-
     @Autowired
     private CommandService commandService;
 
@@ -53,8 +52,8 @@ public class CommandController {
             row.add(String.format("%02d", command.getCommandFunction()));
             row.add(command.getCommandDescription());
             row.add(command.getReturnDataDescription());
-            row.add(dataFormatThreadLocal.get().format(command.getCreateTime()));
-            row.add(dataFormatThreadLocal.get().format(command.getLastModTime()));
+            row.add(DateFormatUtil.format(command.getCreateTime(), "yyyy-MM-dd HH:mm:ss"));
+            row.add(DateFormatUtil.format(command.getLastModTime(), "yyyy-MM-dd HH:mm:ss"));
             row.add(String.valueOf(command.getModUserId()));
             row.add(command.getRemarks());
             return row;
