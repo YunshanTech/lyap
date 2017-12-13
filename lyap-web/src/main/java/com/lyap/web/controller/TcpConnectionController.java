@@ -38,7 +38,12 @@ public class TcpConnectionController {
         JSONObject result = PageUtil.parseResult(pageResult, tcpConnection -> {
             List<String> row = new ArrayList<>();
             row.add(tcpConnection.getName());
-            row.add(DateFormatUtil.format(new Date(tcpConnection.getTime()), "yyyy-MM-dd HH:mm:ss"));
+            row.add(DateFormatUtil.format(new Date(tcpConnection.getConnectTime()), "yyyy-MM-dd HH:mm:ss"));
+            if(tcpConnection.getRecentHeartBeatTime() != null) {
+                row.add(DateFormatUtil.format(new Date(tcpConnection.getRecentHeartBeatTime()), "yyyy-MM-dd HH:mm:ss"));
+            } else {
+                row.add("");
+            }
             return row;
         });
 

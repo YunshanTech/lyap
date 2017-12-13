@@ -34,6 +34,10 @@
                         <i class="icon-time bigger-110 hidden-480"></i>
                         连接时间
                     </th>
+                    <th>
+                        <i class="icon-time bigger-110 hidden-480"></i>
+                        最近心跳时间
+                    </th>
                     <th>操作</th>
                 </tr>
                 </thead>

@@ -2,14 +2,16 @@ package com.lyap.entity;
 
 public class TcpConnection {
     private String name;
-    private Long time;
+    private Long connectTime;
+    private Long recentHeartBeatTime;
 
     public TcpConnection() {
     }
 
-    public TcpConnection(String name, Long time) {
+    public TcpConnection(String name, Long connectTime, Long recentHeartBeatTime) {
         this.name = name;
-        this.time = time;
+        this.connectTime = connectTime;
+        this.recentHeartBeatTime = recentHeartBeatTime;
     }
 
     public String getName() {
@@ -20,11 +22,19 @@ public class TcpConnection {
         this.name = name;
     }
 
-    public Long getTime() {
-        return time;
+    public Long getConnectTime() {
+        return connectTime;
     }
 
-    public void setTime(Long time) {
-        this.time = time;
+    public void setConnectTime(Long connectTime) {
+        this.connectTime = connectTime;
+    }
+
+    public Long getRecentHeartBeatTime() {
+        return recentHeartBeatTime;
+    }
+
+    public void setRecentHeartBeatTime(Long recentHeartBeatTime) {
+        this.recentHeartBeatTime = recentHeartBeatTime;
     }
 }

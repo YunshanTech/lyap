@@ -87,7 +87,7 @@
                             '</a>';
                     return sendMsgButton + '&nbsp;&nbsp;&nbsp;&nbsp;' + closeButton;
                 },
-                "targets": 2
+                "targets": 3
             }]
         });
 
